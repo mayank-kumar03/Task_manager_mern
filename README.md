@@ -6,7 +6,7 @@
 ![Zod](https://img.shields.io/badge/Zod-Validation-orange)
 
 ## 🚀 Overview  
-**Task Manager** is a **Full-Stack Web Application** built using **Node.js, Express.js, and MongoDB**, designed to **create, manage, and complete tasks efficiently**. This project follows **REST API principles** and includes proper **error handling and data validation** with `Zod`.  
+**Task Manager** is a robust **Full-Stack Web Application** designed to help you efficiently create, manage, and complete tasks. Built using the **MERN stack** (MongoDB, Express.js, React, Node.js), designed to **create, manage, and complete tasks efficiently**. This project follows **REST API principles** and includes proper **error handling and data validation** with `Zod`.  
 
 ### 🔥 Features  
 ✅ **Add, Update & Delete Tasks**  
@@ -18,15 +18,44 @@
 ---
 
 ## 🛠️ Tech Stack  
-- **Backend:** Node.js, Express.js, MongoDB, Mongoose  
+- **Backend:** Node.js, Express.js, MongoDB, Mongoose
+- **Frontend:** React.js,Vite
 - **Validation:** Zod  
 - **Environment Config:** dotenv  
 
 ---
 
 ## 📂 Folder Structure  
-Task-Manager/ │── backend/ │ ├── src/ │ │ ├── models/ │ │ │ ├── db.js │ │ ├── middlewares/ │ │ │ ├── types.js │ │ ├── index.js │ ├── package.json │── .env │── README.md
-
+Task-Manager/
+│── backend/
+│   ├── src/
+│   │   ├── models/
+│   │   ├── middlewares/
+│   │   ├── constant.js
+│   │   ├── index.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── .env
+│   ├── .gitignore
+│
+│── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── CreateTodo.jsx
+│   │   │   ├── DeleteTodo.jsx
+│   │   │   ├── Todos.jsx
+│   │   │   ├── UpdateTodo.jsx
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   ├── main.jsx
+│   ├── public/
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── vite.config.js
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
 
 
 
