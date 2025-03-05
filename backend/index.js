@@ -63,6 +63,54 @@ app.put("/completed", async function (req, res) {
     }
 });
 
+// New route to remove completed todos
+app.delete("/completed-todos", async function (req, res) {
+    try {
+        // Remove all todos marked as completed
+        const result = await Todo.deleteMany({ completed: true });
+
+        res.json({ 
+            msg: "Completed todos removed", 
+            deletedCount: result.deletedCount 
+        });
+
+    } catch (error) {
+        res.status(500).json({ 
+            message: "Server Error", 
+            error: error.message 
+        });
+    }
+});
+
+// New route to remove a specific todo
+app.delete("/todo/:id", async function (req, res) {
+    try {
+        const todoId = req.params.id;
+
+        // Validate the ID format if needed
+        if (!todoId) {
+            return res.status(400).json({ message: "Todo ID is required" });
+        }
+
+        const result = await Todo.findByIdAndDelete(todoId);
+
+        if (!result) {
+            return res.status(404).json({ message: "Todo not found" });
+        }
+
+        res.json({ 
+            msg: "Todo deleted successfully", 
+            deletedTodo: result 
+        });
+
+    } catch (error) {
+        res.status(500).json({ 
+            message: "Server Error", 
+            error: error.message 
+        });
+    }
+});
+
 app.listen(8000, () => {
     console.log("Server is running on port 8000...");
 });
