@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { CreateTodo } from './components/CreateTodo'
 import { Todos } from './components/Todos'
 import { UpdateTodo } from './components/UpdateTodo'
+import { DeleteTodo } from './components/DeleteTodo'
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -140,6 +141,10 @@ function App() {
             />
           </>
         )}
+         <DeleteTodo 
+                todos={todos} 
+                onTodosUpdated={fetchTodos}
+            />
       </div>
     </div>
   )
