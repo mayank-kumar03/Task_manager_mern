@@ -110,7 +110,8 @@ app.delete("/todo/:id", async function (req, res) {
         });
     }
 });
+const PORT=process.env.PORT||8000;
 
 app.listen(8000, () => {
-    console.log("Server is running on port 8000...");
+    console.log(`Server is running on port ${PORT}...`);
 });
