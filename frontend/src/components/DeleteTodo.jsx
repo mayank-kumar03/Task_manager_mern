@@ -75,34 +75,34 @@ export function DeleteTodo({ todos, onTodosUpdated }) {
     // Function to handle bulk delete of selected todos
     const handleBulkDelete = async () => {
         if (selectedTodos.length === 0) return;
-
+    
         setIsLoading(true);
         setError(null);
-
+    
         try {
-            const response = await fetch("http://localhost:8000/todos", {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ ids: selectedTodos })
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || "Failed to delete selected todos");
+            // Iterate over each selected todo and delete individually
+            for (const todoId of selectedTodos) {
+                const response = await fetch(`http://localhost:8000/todo/${todoId}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+    
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || `Failed to delete todo with id ${todoId}`);
+                }
             }
-
-            const data = await response.json();
-
-            // Clear selected todos
+    
+            // Clear selected todos after deletion
             setSelectedTodos([]);
-
+    
             // Notify parent component about the update
             onTodosUpdated();
-
+    
             // Show success notification
-            alert(`${data.deletedCount} todos deleted`);
+            alert("Selected todos deleted successfully");
         } catch (error) {
             console.error("Error deleting todos:", error);
             setError(error.message);
@@ -111,6 +111,7 @@ export function DeleteTodo({ todos, onTodosUpdated }) {
             setIsLoading(false);
         }
     };
+    
 
     // Toggle todo selection
     const toggleTodoSelection = (todoId) => {

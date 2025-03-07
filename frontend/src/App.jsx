@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { CreateTodo } from './components/CreateTodo'
-import { Todos } from './components/Todos'
+
 import { UpdateTodo } from './components/UpdateTodo'
 import { DeleteTodo } from './components/DeleteTodo'
+import './App.css';
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -49,105 +50,44 @@ function App() {
   }
 
   return (
-    <div className="app-container" style={{
-      maxWidth: '800px',
-      margin: '0 auto',
-      padding: '20px',
-      fontFamily: 'Arial, sans-serif'
-    }}>
-      <header style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '20px'
-      }}>
+    <div className="app-container">
+      <header>
         <h1>Todo Management App</h1>
         <button 
           onClick={handleManualRefresh}
           disabled={isLoading}
-          style={{
-            padding: '10px 15px',
-            backgroundColor: isLoading ? '#cccccc' : '#4CAF50',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: isLoading ? 'not-allowed' : 'pointer'
-          }}
         >
           {isLoading ? 'Refreshing...' : 'Refresh Todos'}
         </button>
       </header>
 
-      {/* Error Handling */}
       {error && (
-        <div 
-          style={{
-            backgroundColor: '#ffdddd',
-            color: '#ff0000',
-            padding: '10px',
-            marginBottom: '20px',
-            borderRadius: '5px'
-          }}
-        >
+        <div className="error-message">
           Error: {error}
-          <button 
-            onClick={handleManualRefresh}
-            style={{
-              marginLeft: '10px',
-              backgroundColor: '#ff0000',
-              color: 'white',
-              border: 'none',
-              padding: '5px 10px',
-              borderRadius: '3px'
-            }}
-          >
+          <button onClick={handleManualRefresh} style={{ marginLeft: '10px' }}>
             Retry
           </button>
         </div>
       )}
 
-      {/* Loading Indicator */}
       {isLoading && (
-        <div 
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100px',
-            fontSize: '18px',
-            color: '#666'
-          }}
-        >
+        <div className="loading-indicator">
           Loading todos...
         </div>
       )}
 
-      {/* Todo Management Components */}
       <div className="todo-management">
-        <CreateTodo 
-          onTodoAdded={fetchTodos} 
-          isLoading={isLoading}
-        />
-        
+        <CreateTodo onTodoAdded={fetchTodos} isLoading={isLoading} />
         {!isLoading && (
           <>
-            <Todos 
-              todos={todos} 
-              isLoading={isLoading}
-            />
-            <UpdateTodo 
-              todos={todos}
-              onTodoUpdated={fetchTodos} 
-            />
+            
+            <UpdateTodo todos={todos} onTodoUpdated={fetchTodos} />
+            <DeleteTodo todos={todos} onTodosUpdated={fetchTodos} />
           </>
         )}
-         <DeleteTodo 
-                todos={todos} 
-                onTodosUpdated={fetchTodos}
-            />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

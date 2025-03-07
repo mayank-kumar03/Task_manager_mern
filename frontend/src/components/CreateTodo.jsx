@@ -48,7 +48,7 @@ export function CreateTodo({ onTodoAdded }) {
 
     return (
         <div>
-            <div className="input-section">
+           <div className="input-section">
                 <input 
                     style={{
                         padding: 10,
