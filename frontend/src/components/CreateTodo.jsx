@@ -12,7 +12,7 @@ export function CreateTodo({ onTodoAdded }) {
         }
 
         try {
-            const response = await fetch("http://localhost:8000/todo", {
+            const response = await fetch("https://task-manager-mern-1xrb.onrender.com/todo", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

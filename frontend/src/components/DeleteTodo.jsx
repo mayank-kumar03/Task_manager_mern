@@ -12,7 +12,7 @@ export function DeleteTodo({ todos, onTodosUpdated }) {
         setError(null);
 
         try {
-            const response = await fetch("http://localhost:8000/completed-todos", {
+            const response = await fetch("https://task-manager-mern-1xrb.onrender.com/completed-todos", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"

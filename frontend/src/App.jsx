@@ -15,7 +15,7 @@ function App() {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch("http://localhost:8000/todos")
+      const response = await fetch("https://task-manager-mern-1xrb.onrender.com/todos")
       
       // Check if response is ok
       if (!response.ok) {

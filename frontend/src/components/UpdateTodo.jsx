@@ -3,7 +3,7 @@ import { useState } from "react";
 export function UpdateTodo({ todos, onTodoUpdated }) {
     const handleCompleteTodo = async (todoId) => {
         try {
-            const response = await fetch("http://localhost:8000/completed", {
+            const response = await fetch("https://task-manager-mern-1xrb.onrender.com/completed", {
                 method: "PUT",
                 headers: {
                     "Content-type": "application/json"
