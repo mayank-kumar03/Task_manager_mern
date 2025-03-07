@@ -46,7 +46,7 @@ export function DeleteTodo({ todos, onTodosUpdated }) {
         setError(null);
 
         try {
-            const response = await fetch(`http://localhost:8000/todo/${todoId}`, {
+            const response = await fetch(`https://task-manager-mern-1xrb.onrender.com/todo/${todoId}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
@@ -82,7 +82,7 @@ export function DeleteTodo({ todos, onTodosUpdated }) {
         try {
             // Iterate over each selected todo and delete individually
             for (const todoId of selectedTodos) {
-                const response = await fetch(`http://localhost:8000/todo/${todoId}`, {
+                const response = await fetch(`https://task-manager-mern-1xrb.onrender.com/todo/${todoId}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json"
